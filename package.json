@@ -7,6 +7,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "echarts": "4.4.0",
+    "echarts-for-react": "2.0.15-beta.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
