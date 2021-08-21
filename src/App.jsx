@@ -1,20 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from "react";
+import Home from "./pages/Home/Home"
 
 function App() {
-  const [count, setCount] = useState(0);
-  
-  useEffect(()=>{
-    console.log('Hello React 17 + Vite App!', count)
-  }, [count])
-
-  return (
-    <>
-      Count: {count}
-      <button onClick={() => setCount(0)}>Reset</button>
-      <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
-      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
-    </>
-  );
+  return(
+    <Home/>
+  )
 }
 
 export default App
