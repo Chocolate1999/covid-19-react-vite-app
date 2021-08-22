@@ -1,15 +1,20 @@
-import React from "react";
-import Map from './../../components/Map/Map'
-import s from './style.module.css'
+import React, { useState, useEffect } from "react";
+import Map from "./../../components/Map/Map";
+import { getMapDataUtil } from "./../../utils/utils";
+import { getCovidDataList } from "./../../api/getCovid19Data";
+import s from "./style.module.css";
 
 const Home = () => {
-  return(
-    <>
-    <div>学如逆水行舟，不进则退</div>
-    <div>公众号：小狮子前端</div>
-    <Map/>
-    </>
-  )
-}
+  const [mapList, setMapList] = useState([]);
 
-export default Home
+  useEffect(async () => {
+    const res = await getCovidDataList();
+    const { retdata } = res.data;
+    const list = getMapDataUtil(retdata);
+    setMapList(list);
+  }, []);
+
+  return <>{mapList.length > 0 ? <Map mapList={mapList} /> : null}</>;
+};
+
+export default Home;
