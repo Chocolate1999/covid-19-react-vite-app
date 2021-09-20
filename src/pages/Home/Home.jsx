@@ -8,10 +8,13 @@ const Home = () => {
   const [mapList, setMapList] = useState([]);
 
   useEffect(async () => {
-    const res = await getCovidDataList();
-    const { retdata } = res.data;
-    const list = getMapDataUtil(retdata);
-    setMapList(list);
+    const fn = async () => {
+      const res = await getCovidDataList();
+      const { retdata } = res.data;
+      const list = getMapDataUtil(retdata);
+      setMapList(list);
+    }
+    fn();
   }, []);
 
   return <>{mapList.length > 0 ? <Map mapList={mapList} /> : null}</>;
